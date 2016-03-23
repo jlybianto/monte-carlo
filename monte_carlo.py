@@ -1,6 +1,8 @@
 """This script demonstrates simulations of coin flipping"""
 
 import random
+import matplotlib.pyplot as plt
+from numpy.random import normal
 
 # Create virtual fair coin object that can be flipped
 class Coin(object):
@@ -30,9 +32,13 @@ def count_tailss(flipped_coins):
 
 def main():
 	coins = create_coins(1000)
+	col = []
 	for i in xrange(100):
 		flip_coins(coins)
-		print(count_heads(coins))
+		col.append(count_heads(coins))
+	print sum(col) / len(col)
+	plt.hist(col)
+	plt.show()
 
 if __name__ == "__main__":
 	main()
